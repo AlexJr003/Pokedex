@@ -14,18 +14,73 @@
     </header>
     
 <main> 
+
+    <section id="submit">
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9AOdHLdaICoIfaL9S5VXlYALF7ZMGpqssaA&usqp=CAU" alt="Pokemon">
+      
+<div> 
+            <% if (pokemon == undefined) { %>
+                <h2>Submit a new Pokemon</h2>
+
+        <form action="/add" method="post">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description">
+
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type">
+
+            <label for="imagem">Imagem:</label>
+            <input type="text" id="imagem" name="imagem">
+            
+            <button id="btnCadastrar" type="submit">Submit</button>
+
+        </form>
+        <% } else { %>
+            <h2>Update from Pokemon</h2>
+        <form action="/update/<%= pokemon.id %>" method="POST">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="<%= pokemon.name %>">
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" value="<%= pokemon.description %>">
+
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type" value="<%= pokemon.type %>">
+
+            <label for="imagem">Imagem:</label>
+            <input type="text" id="imagem" name="imagem" value="<%= pokemon.imagem %>">
+            
+            <button id="btnUpdate" type="submit">Submit</button>
+
+        </form>
+        <% } %>
+    </div> 
+    </section>
+
+    
+
     <section id="cards">
+
+        <h2>Pokemon List</h2>
 
         <% pokedex.forEach((pokemon) => { %>
     <div class="card">
         <img src="<%= pokemon.imagem %>" alt="">
-        <h2><%= pokemon.name %></h2>
+        <h3><%= pokemon.name %></h3>
         <p class="description"><%= pokemon.description %></p>
         <p>Type: <%= pokemon.type %></p>
+        <a href="/details/<%= pokemon.id %>">Edit</a>
     </div>
         <% }) %>
-
+     
     </section>
+
 
 </main>
 
