@@ -9,15 +9,27 @@
 </head>
 <body>
 
+    <nav>
+        <ul>
+            <li><img src="/img/pokebola.jpg" alt="pokebola"></li>
+            <li>
+                <a href="/"><h1>Pokedex</h1></a>
+            </li>
+            <li><a href="#submit">Submit</a></li>
+            <li><a href="#cards">Pokemons</a></li>
+        </ul>
+    </nav>
+
     <header>
-        <h1>Pokedex</h1>
+        <img src="/img/pokemonBanner.jpg" alt="Banner">
     </header>
+
     
 <main> 
 
     <section id="submit">
 
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9AOdHLdaICoIfaL9S5VXlYALF7ZMGpqssaA&usqp=CAU" alt="Pokemon">
+        
       
 <div> 
             <% if (pokemon == undefined) { %>
@@ -34,7 +46,7 @@
             <label for="type">Type:</label>
             <input type="text" id="type" name="type">
 
-            <label for="imagem">Imagem:</label>
+            <label for="imagem">Image:</label>
             <input type="text" id="imagem" name="imagem">
             
             <button id="btnCadastrar" type="submit">Submit</button>
@@ -72,10 +84,11 @@
         <% pokedex.forEach((pokemon) => { %>
     <div class="card">
         <img src="<%= pokemon.imagem %>" alt="">
-        <h3><%= pokemon.name %></h3>
+        <h3 class="name"><%= pokemon.name %></h3>
         <p class="description"><%= pokemon.description %></p>
-        <p>Type: <%= pokemon.type %></p>
+        <p class="type" >Type: <%= pokemon.type %></p>
         <a href="/details/<%= pokemon.id %>">Edit</a>
+        <a href="/delete/<%= pokemon.id %>">Delete</a>
     </div>
         <% }) %>
      
@@ -83,6 +96,12 @@
 
 
 </main>
+
+<footer>
+    <p>
+        Information taken from<a href="https://www.pokemon.com/br/pokedex/"> Pokedex</a>
+    </p>
+</footer>
 
 </body>
 </html>

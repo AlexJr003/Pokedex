@@ -53,13 +53,13 @@ app.post("/add", (req, res) => {
   const pokemon = req.body;
   pokemon.id = pokedex.length + 1;
   pokedex.push(pokemon);
-  res.redirect("/");
+  res.redirect("/#cards");
 });
 
 app.get("/details/:id", (req, res) => {
     const id = +req.params.id;
     pokemon = pokedex.find((pokemon) => pokemon.id === id);
-    res.redirect("/");
+    res.redirect("/#submit");
 });
 
 app.post("/update/:id", (req, res) => {
@@ -68,8 +68,17 @@ app.post("/update/:id", (req, res) => {
     newPokemon.id = id + 1;
     pokedex[id] = newPokemon;
     pokemon = undefined;
-    res.redirect("/");
+    res.redirect("/#cards");
 });
+
+app.get("/delete/:id", (req, res) => {
+  const id = +req.params.id - 1;
+  
+  delete pokedex[id]
+
+  res.redirect("/#cards");
+  
+})
 
 app.listen(3000, () =>
   console.log("Servidor rodando em http://localhost:3000")
