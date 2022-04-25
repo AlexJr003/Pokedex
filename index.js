@@ -7,7 +7,7 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded());
 
-const pokedex = [
+let pokedex = [
   {
     id: 1,
     name: "Bulbasaur",
@@ -15,6 +15,10 @@ const pokedex = [
       "There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.",
     type: "Grass",
     imagem: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png",
+    height:"0.7 m",
+    weight:"6.9 kg",
+    category:"Seed",
+    skill:"Overgrow",
   },
   {
     id: 2,
@@ -23,6 +27,10 @@ const pokedex = [
       "It has a preference for hot things. When it rains, steam is said to spout from the tip of its tail.",
     type: "Fire",
     imagem: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png",
+    height:"0.6 m",
+    weight:"8.5 kg",
+    category:"Lizard",
+    skill:"Blaze",
   },
   {
     id: 3,
@@ -31,6 +39,10 @@ const pokedex = [
       "When it retracts its long neck into its shell, it squirts out water with vigorous force.",
     type: "Water",
     imagem: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png",
+    height:"0.5 m",
+    weight:"9.0 kg",
+    category:"Tiny Turtle",
+    skill:"Torrent",
   },
   {
     id: 4,
@@ -39,6 +51,10 @@ const pokedex = [
       "Pikachu that can generate powerful electricity have cheek sacs that are extra soft and super stretchy.",
     type: "Electric",
     imagem: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png",
+    height:"0.4 m",
+    weight:"6.0 kg",
+    category:"Mouse",
+    skill:"Static",
   },
 ];
 
@@ -61,6 +77,18 @@ app.get("/details/:id", (req, res) => {
     pokemon = pokedex.find((pokemon) => pokemon.id === id);
     res.redirect("/#submit");
 });
+
+app.get('/detalhes/:id', (req, res) => {
+  let pokemon = []
+  pokedex.filter((element) => {
+      if(element.id == req.params.id){
+      pokemon = element
+    }
+  })
+  res.render("details.ejs", {pokemon})
+  })
+
+
 
 app.post("/update/:id", (req, res) => {
     const id = +req.params.id - 1;

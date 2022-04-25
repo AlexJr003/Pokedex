@@ -64,6 +64,7 @@ section#cards{
     justify-content:space-evenly;
     margin-top: 5rem;
     flex-wrap: wrap;
+    
 }
 
 section#cards div.card{
@@ -72,6 +73,7 @@ section#cards div.card{
     padding: 5rem;
     margin: 3rem 0 5rem 0;
     background-image: url(../img/pokedexWallpaper.jpg);
+    
 }
 
 section#cards h2{
@@ -135,6 +137,7 @@ section#cards div.card p.description{
 
 section#cards div.card p.type{
     color: white;
+    padding:0.05rem;
 }
 
 section#submit{

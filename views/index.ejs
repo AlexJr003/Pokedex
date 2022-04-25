@@ -46,6 +46,18 @@
             <label for="type">Type:</label>
             <input type="text" id="type" name="type">
 
+            <label for="height">Height:</label>
+            <input type="text" id="height" name="height">
+
+            <label for="weight">Weight:</label>
+            <input type="text" id="weight" name="weight">
+
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category">
+
+            <label for="skill">Skill:</label>
+            <input type="text" id="skill" name="skill">
+
             <label for="imagem">Image:</label>
             <input type="text" id="imagem" name="imagem">
             
@@ -53,7 +65,7 @@
 
         </form>
         <% } else { %>
-            <h2>Update from Pokemon</h2>
+            <h2>Update the Pokemon</h2>
         <form action="/update/<%= pokemon.id %>" method="POST">
 
             <label for="name">Name:</label>
@@ -65,6 +77,18 @@
             <label for="type">Type:</label>
             <input type="text" id="type" name="type" value="<%= pokemon.type %>">
 
+            <label for="height">Height:</label>
+            <input type="text" id="height" name="height" value="<%= pokemon.height %>">
+
+            <label for="weight">Weight:</label>
+            <input type="text" id="weight" name="weight" value="<%= pokemon.weight %>">
+
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" value="<%= pokemon.category %>">
+
+            <label for="type">Skill:</label>
+            <input type="text" id="skill" name="skill" value="<%= pokemon.skill %>">
+
             <label for="imagem">Imagem:</label>
             <input type="text" id="imagem" name="imagem" value="<%= pokemon.imagem %>">
             
@@ -72,6 +96,7 @@
 
         </form>
         <% } %>
+
     </div> 
     </section>
 
@@ -82,13 +107,17 @@
         <h2>Pokemon List</h2>
 
         <% pokedex.forEach((pokemon) => { %>
+            
     <div class="card">
+        
         <img src="<%= pokemon.imagem %>" alt="">
         <h3 class="name"><%= pokemon.name %></h3>
         <p class="description"><%= pokemon.description %></p>
         <p class="type" >Type: <%= pokemon.type %></p>
+        <a href="/detalhes/<%= pokemon.id %> ">Details</a>
         <a href="/details/<%= pokemon.id %>">Edit</a>
         <a href="/delete/<%= pokemon.id %>">Delete</a>
+        
     </div>
         <% }) %>
      
@@ -104,4 +133,5 @@
 </footer>
 
 </body>
+<script src="/js/script.js"> </script>
 </html>
